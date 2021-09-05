@@ -12,7 +12,7 @@ default = ["console_error_panic_hook"]
 
 [dependencies]
 cfg-if = "0.1.2"
-worker = "0.0.3"
+worker = "0.0.4"
 serde_json = "1.0"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -29,9 +29,6 @@ wee_alloc = { version = "0.4.2", optional = true }
 [dependencies.serde]
 version = "1.0"
 features = ["derive"]
-
-[patch.crates-io]
-worker = { path = "../../workers-rs/worker" }
 
 [profile.release]
 # Tell `rustc` to optimize for small code size.

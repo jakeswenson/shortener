@@ -50,7 +50,7 @@ pub async fn main(req: Request, env: Env) -> Result<Response> {
             .map(|r| r.with_headers(headers).with_status(301))
         } else {
           console_log!("No url for: {}", name);
-          Response::error("Url not found", 404)
+          Response::error("Requested url not found", 404)
         }
       } else {
         Response::error("Bad Request", 400)
