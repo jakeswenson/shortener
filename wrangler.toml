@@ -1,29 +1,24 @@
 name = "shortener"
-type = "javascript"
+type = "rust"
 workers_dev = true
-compatibility_date = "2021-08-27" # required
-compatibility_flags = [ "formdata_parser_supports_files" ] # required
+compatibility_date = "2024-11-28" # required
+main   = "build/worker/shim.mjs"
 
 [vars]
-WORKERS_RS_VERSION = "0.0.3"
+HOME = "https://jakeswenson.com"
 
 [build]
-command = "cargo install -q worker-build && worker-build --release" # required
-
-[build.upload]
-dir    = "build/worker"
-format = "modules"
-main   = "./shim.mjs"
-
-[[build.upload.rules]]
-globs = ["**/*.wasm"]
-type  = "CompiledWasm"
+command = "cargo install -q worker-build && worker-build --release"
 
 # read more about configuring your Worker via wrangler.toml at:
 # https://developers.cloudflare.com/workers/cli-wrangler/configuration
 
 [[kv_namespaces]]
 binding = "urls"
-preview_id = "bba83c0aaabb42b0ab77896cb006d8f5"
+preview_id = "baa83c0aaabb42b0ab77896cb006d8f5"
 id = "bba83c0aaabb42b0ab77896cb006d8f5"
 
+[observability]
+enabled = true
+
+logs = { enabled = true }

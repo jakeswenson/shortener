@@ -3,16 +3,22 @@ name = "shortener"
 version = "0.1.0"
 authors = ["Jake Swenson <jake@jakeswenson.com>"]
 edition = "2018"
+resolver = "2"
+description = "A cloudflare work shortener with links in kv"
+repository = "httms://github.com/jakeswenson/shortener"
+license = "Unlicense"
 
 [lib]
-crate-type = ["cdylib", "rlib"]
+crate-type = ["cdylib"]
 
 [features]
-default = ["console_error_panic_hook"]
+default = ["small"]
+small = ["dep:wee_alloc"]
+debug = ["dep:console_error_panic_hook"]
 
 [dependencies]
-cfg-if = "0.1.2"
-worker = "0.0.4"
+worker = "0.4.2"
+worker-macros = "0.4.2"
 serde_json = "1.0"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by
@@ -24,17 +30,23 @@ console_error_panic_hook = { version = "0.1.1", optional = true }
 # `wee_alloc` is a tiny allocator for wasm that is only ~1K in code size
 # compared to the default allocator's ~10K. It is slower than the default
 # allocator, however.
-wee_alloc = { version = "0.4.2", optional = true }
+wee_alloc = { version = "0.4.5", optional = true }
 
 [dependencies.serde]
 version = "1.0"
 features = ["derive"]
+
+# https://github.com/cloudflare/workers-rs/issues/668
+# [patch.crates-io]
+# wasm-bindgen = { git = "https://github.com/rustwasm/wasm-bindgen" }
 
 [profile.release]
 # Tell `rustc` to optimize for small code size.
 opt-level = "s"
 
 # https://github.com/rustwasm/wasm-pack/issues/913#issuecomment-803563120
-[package.metadata.wasm-pack.profile.release]
-wasm-opt = false
+# [package.metadata.wasm-pack.profile.release]
+# wasm-opt = false
 
+[package.metadata.release]
+release = false
