@@ -17,8 +17,9 @@ small = ["dep:wee_alloc"]
 debug = ["dep:console_error_panic_hook"]
 
 [dependencies]
-worker = "0.4.2"
-worker-macros = "0.4.2"
+thiserror = "2.0.17"
+worker = "0.6.6"
+worker-macros = "0.6.6"
 serde_json = "1.0"
 
 # The `console_error_panic_hook` crate provides better debugging of panics by

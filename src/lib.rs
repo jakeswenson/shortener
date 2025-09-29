@@ -36,7 +36,7 @@ pub async fn main(
   // Enviornment bindings like KV Stores, Durable Objects, Secrets, and Variables.
   let result = router
     .get_async("/", |_req, ctx| async move {
-      let mut headers = Headers::new();
+      let headers = Headers::new();
       let home_redirect = ctx.var("HOME")?;
       headers.append("Location", &home_redirect.to_string())?;
       Response::empty().map(|r| r.with_headers(headers).with_status(301))
@@ -51,7 +51,7 @@ pub async fn main(
           console_log!("Found KV for url: {}", name);
           console_log!("Redirecting to: {}", location);
 
-          let mut headers = Headers::new();
+          let headers = Headers::new();
 
           headers.append("Location", &location)?;
 
