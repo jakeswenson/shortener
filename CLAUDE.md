@@ -24,14 +24,14 @@ This is a Cloudflare Workers project written in Rust that implements a URL short
 
 ### Development
 ```bash
-# Build the project (compiles Rust to WASM)
-wrangler build
-
 # Run local development server with file watching
 wrangler dev
 
 # Deploy to Cloudflare Workers
-wrangler publish
+wrangler deploy
+
+# Build/test the project (compiles Rust to WASM) - for testing only
+wrangler deploy --dry-run --outdir=dist
 ```
 
 ### Rust Toolchain

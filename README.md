@@ -33,14 +33,14 @@ URL mappings are stored in Cloudflare KV, allowing for:
 ### Commands
 
 ```bash
-# Build the project (compiles Rust to WebAssembly)
-wrangler build
-
 # Run local development server with file watching and hot reload
 wrangler dev
 
 # Deploy to Cloudflare Workers globally
-wrangler publish
+wrangler deploy
+
+# Build the project (compiles Rust to WebAssembly) - for testing only
+wrangler deploy --dry-run --outdir=dist
 ```
 
 ### Configuration

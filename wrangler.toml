@@ -1,5 +1,5 @@
 name = "shortener"
-type = "rust"
+#type = "rust"
 workers_dev = true
 compatibility_date = "2024-11-28" # required
 main   = "build/worker/shim.mjs"
